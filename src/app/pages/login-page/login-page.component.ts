@@ -23,7 +23,6 @@ export class LoginPageComponent {
     password: new FormControl<string | null>(null, Validators.required)
   })
 
-
   onSubmit() {
     if (this.form.valid) {
       //@ts-ignore
