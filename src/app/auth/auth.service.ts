@@ -14,6 +14,8 @@ export class AuthService {
   refreshToken: string | null = null;
 
  get isAuth() {
+   console.log(this.token);
+   console.log(!!this.token);
    return !!this.token;
  }
 
@@ -29,8 +31,8 @@ export class AuthService {
       fd,
     ).pipe(
       tap(val => {
-        this.token = val.acsessToken;
-        this.refreshToken = val.refreshToken;
+        this.token = val.access_token;
+        this.refreshToken = val.refresh_token;
       })
     )
   }
