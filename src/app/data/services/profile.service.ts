@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Profile } from '../interfaces/profile.interface';
+import {tap} from "rxjs";
+import {Pageble} from "../interfaces/pageble.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +18,27 @@ export class ProfileService {
   }
 
   getMe() {
-    return this.http.get<Profile>(`${this.baseApiUrl}account/me`);
+    return this.http.get<Profile>(`${this.baseApiUrl}account/me`)
+      //.pipe(
+       // tap(res => this.me.set(res))
+      //)               у цього пітуха тут зміни які він не показав
+  }
+
+  getAccount(id: string) {
+    return this.http.get<Profile>(`${this.baseApiUrl}account/${id}`);
+  }
+
+  getSubscribersShortList() {
+    return this.http.get<Pageble<Profile>>(`${this.baseApiUrl}account/subscribers`);
+  }
+
+
+// що нижче, то підарас не показав
+  patchProfile(profile: Partial<Profile>) {
+    return this.http.patch<Profile>(
+      `${this.baseApiUrl}account/me`,
+      profile
+    )
   }
 }
+// більше не видно нічого
