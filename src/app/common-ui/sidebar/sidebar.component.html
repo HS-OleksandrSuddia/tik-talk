@@ -6,11 +6,11 @@
 
 <nav>
   <ul class="main-menu-list">
-    <li>
-      <button class="menu-item">
-        <svg icon="home"></svg>
-        <span>Моя страница</span>
-      </button>
+    <li *ngFor="let menuItem of menuItems">
+      <a class="menu-item" [routerLink]="[menuItem.link]">
+        <svg [icon]="menuItem.icon"></svg>
+        <span>{{ menuItem.label }}</span>
+      </a>
     </li>
   </ul>
 </nav>
