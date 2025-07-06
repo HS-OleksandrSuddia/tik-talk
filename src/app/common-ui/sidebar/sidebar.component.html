@@ -32,7 +32,7 @@
 </div>
 
 <footer class="sidebar__footer">
-  @if (me; as me) {
+  @if (me(); as me) {
     @if (me.avatarUrl) {
     <img [src]="me.avatarUrl | imgUrl" alt="">
     } @else {
